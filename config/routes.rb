@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   resources :users 
   resources :journeys do 
-    resources :comments, only: [:new, :create]
+    resources :comments, only: [:new, :create, :show]
   end
 
 
