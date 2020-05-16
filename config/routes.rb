@@ -1,12 +1,17 @@
 Rails.application.routes.draw do
 
-  get '/signup' => 'users#new'
-  post '/signup' => 'users#create'
+  get '/signup', to: 'users#new'
+  get '/', to: 'application#welcome' 
+  get '/login', to: 'sessions#login'
+  
 
-  resources :comments
-  resources :users
-  resources :journeys 
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  resources :users 
+  resources :journeys do 
+    resources :comments, only: [:new, :create]
+  end
+
+
+  delete '/logout', to: 'sessions#destroy'
 end
 
 #if you want to add any custom routes, add them at the top 
