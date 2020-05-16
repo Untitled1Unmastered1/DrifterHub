@@ -4,18 +4,22 @@ class SessionsController < ApplicationController
 
     end
 
-    def create 
-        if !params[:username].empty? 
-            session[:username] = params[:username]
-            redirect_to root_path 
-        else 
-            redirect_to login_path 
+    def new 
 
+    end
+
+    def create
+        @user = User.find_by(username: params[:user][:username])
+        if @user && @user.authenticate(params[:user][:password])
+            session[:user_id] = @user.id 
+            redirect_to user_path(@user)
+        else 
+            redirect_to new_session_path, alert: "User not found. Please login with the correct credentials."
         end
     end
 
     def destroy 
         session.delete :user_id 
-        redirect_to '/'
+        redirect_to root_path 
     end
 end

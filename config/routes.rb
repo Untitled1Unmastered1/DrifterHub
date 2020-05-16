@@ -12,6 +12,7 @@ Rails.application.routes.draw do
 
 
   delete '/logout', to: 'sessions#destroy'
+  root 'application#welcome'
 end
 
 #if you want to add any custom routes, add them at the top 
