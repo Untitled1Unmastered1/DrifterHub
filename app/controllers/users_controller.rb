@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
     before_action :logged_in?, only: [:show, :edit, :update, :destroy] #before any of these actions, make sure user is 
-    #logged_in. not sure if update necessary or not 
+    #logged_in.
 
     def new
         @user = User.new
@@ -13,7 +13,7 @@ class UsersController < ApplicationController
             session[:user_id] = @user.id 
             redirect_to user_path(@user)
           else 
-            redirect_to new_user_path 
+            redirect_to new_user_path #may have to add @user as an argument if this doesnt work 
           end
     end
 
@@ -26,7 +26,13 @@ class UsersController < ApplicationController
     end
 
     def update
-
+      @user = User.find(params[:id])
+      if @user.valid?
+        @user.update(username: params[:user][:username])
+        redirect_to user_path(@user)
+      else 
+        redirect_to edit_user_path #may have to add @user as an argument if this doesnt work 
+      end
     end
 
     def destroy 
