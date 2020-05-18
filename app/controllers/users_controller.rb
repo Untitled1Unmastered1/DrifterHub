@@ -1,5 +1,8 @@
 class UsersController < ApplicationController
 
+    before_action :logged_in?, only: [:show, :edit, :update, :destroy] #before any of these actions, make sure user is 
+    #logged_in. not sure if update necessary or not 
+
     def new
         @user = User.new
     end
@@ -27,7 +30,7 @@ class UsersController < ApplicationController
     end
 
     def destroy 
-      
+
     end
 
     private
