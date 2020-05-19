@@ -25,14 +25,12 @@ class JourneysController < ApplicationController
     end
 
     def edit
-        @journey = Journey.find_by_id(params[:id])
     end
 
 
     def update
-        @journey = Journey.find_by_id(params[:id])
-        if @journey.valid? 
-            @journey.save 
+        if @journey.update(journey_params)
+            redirect_to journey_path(@journey)
         else 
             redirect_to edit_journey_path 
         end
@@ -49,6 +47,6 @@ class JourneysController < ApplicationController
     private
 
     def journey_params
-        params.require(:journey).permit(:title, :date, :miles, :location, :description, :user_id)
+        params.require(:journey).permit(:title, :date, :miles, :location, :description)
     end
 end
