@@ -14,7 +14,7 @@ class JourneysController < ApplicationController
         @journey.user_id = session[:user_id]
         if @journey.valid?
             @journey.save 
-            redirect_to journeys_path 
+            redirect_to journey_path(@journey)
         else 
             redirect_to new_journey_path 
         end
@@ -25,10 +25,12 @@ class JourneysController < ApplicationController
     end
 
     def edit
+        @journey = Journey.find_by_id(params[:id])
     end
 
 
     def update
+        @journey = Journey.find_by_id(params[:id])
         if @journey.update(journey_params)
             redirect_to journey_path(@journey)
         else 

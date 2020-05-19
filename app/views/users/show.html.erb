@@ -1,5 +1,6 @@
 <h3>Welcome back <%= current_user.username %></h3>
 
+<%= link_to "Add a new Journey", new_journey_path %>
 <%=link_to  "See other Users' Journeys", journeys_path %>
 <%=link_to "Account Settings", edit_user_path %>
 <br>

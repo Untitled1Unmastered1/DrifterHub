@@ -1,0 +1,26 @@
+<%= render partial:'layouts/errors', locals: {object: @journey} %>
+
+<h5><%= flash[:error] %></h5>
+<%= form_for @journey do |f| %>
+    <%= f.label 'How did this journey make you feel?' %>
+    <%= f.text_field :title %>
+    <br>
+    <br>
+    <%= f.label 'Please provide exact date.' %>
+    <%= f.text_field :date %>
+    <br>
+    <br>
+    <%= f.label 'What was the length of your Journey?' %>
+    <%= f.text_field :miles %>
+    <br>
+    <br>
+    <%= f.label 'Exact location' %>
+    <%= f.text_field :location %>
+    <br>
+    <br>
+    <%= f.label 'Please provide us details!'%>
+    <%= f.text_area :description %>
+    <br>
+        <br>
+    <%= f.submit "Submit Journey" %>
+<% end %>
