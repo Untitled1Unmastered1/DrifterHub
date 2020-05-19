@@ -1,0 +1,12 @@
+<br>
+<h3> Please log in </h3>
+<p> Or <%= link_to "Sign up", '/signup' %></p>
+<h5><%= flash[:error] %></h5>
+<br>
+<%= form_tag('/login', method: :post) do %>
+    <label> Username: </label>  
+        <%= text_field_tag :'user[username]'%><br>
+    <label> Password: </label>
+        <%= text_field_tag :'user[password]'%><br>
+    <%= submit_tag "Log In"%>
+<% end %>

@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
     helper_method :current_user, :welcome, :logged_in?, :require_login
 
     def welcome
-        current_user 
+        
     end
 
     # def logged_in?
