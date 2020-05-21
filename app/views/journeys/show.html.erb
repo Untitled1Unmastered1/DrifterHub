@@ -1,7 +1,9 @@
 
-    <h4><%= @journey.title %></h4>
-    <p><%= @journey.date%>   <%= @journey.miles%> <%= @journey.location %></p>
-    <p><%= @journey.description %></p>
+    <h1><%= @journey.title %></h1>
+    <h3>Date: <%= @journey.date%>
+    <h3> Miles: <%= @journey.miles%> 
+    <h3>Location: <%= @journey.location %></h3>
+    <h2> Description: <%= @journey.description %></h2>
     <br>
     <p>Post created by: <h3><%= @journey.user.username %></h3></p>
         <% unless @journey.comments.count == 0 %>
