@@ -7,6 +7,7 @@ body {
    background-image: url("https://pixelz.cc/wp-content/uploads/2018/07/courthouse-towers-arches-national-park-utah-united-states-uhd-4k-wallpaper.jpg");
    background-position: center;
    background-repeat: no-repeat;
+   background-attachment: fixed; 
    background-size: cover;
    margin: auto;
    width: 100%;
@@ -17,31 +18,25 @@ body {
 }
 
 h1 {
-    font-family: fantasy;
-}
-
-/* h4 {
-    margin-top: 10px;
-    margin-left: 3px;
-} */
-
-/* #main {
-    margin-right: 0;
-    padding-left: 300px;
-    padding-right: 20px;
-    margin: 40px; 
-    text-align: right;
-    padding-right: 50px;
-} */
-
-
-#main_header {
-    font-size: 75px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    margin: 20px; 
+    font-size: 60px;
     color: orangered;
     text-align: center;
     margin-top: 0;
     margin-bottom: 0; 
 }
+
+h5 {
+    margin-top: 10px;
+    margin-left: 3px;
+    text-align: center
+} 
+
+#welcome {
+    text-align: center
+}
+
 
 .field_with_errors {
     padding: 2px;
