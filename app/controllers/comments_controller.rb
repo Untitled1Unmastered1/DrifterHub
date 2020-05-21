@@ -8,22 +8,14 @@ class CommentsController < ApplicationController
     end
 
     def create 
-        @comment = Comment.new(comment_params)
+        @comment = Comment.new(content: params[:comment][:content], user_id: current_user.id, journey_id: params[:journey_id])
         if @comment.save
-            redirect_to journey_comment_path 
-        else 
-            redirect_to new_journey_comment_path 
-        end
+            redirect_to journey_path(@comment.journey_id)
+        end 
     end
 
     def show 
         @comment = Comment.find_by_id(params[:journey_id][:comment])
     end
 
-
-    private 
-
-    def comment_params
-        params.require(:comment).permit(content: params[:comment][:content], user_id: current_user.id, journey_id: params[:journey_id])
-    end
 end
