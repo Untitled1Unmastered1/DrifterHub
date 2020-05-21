@@ -27,8 +27,8 @@
 <br>
 <h3 style="color:gold;">Other Drifters' Journeys!</h3>
 <br>
-    <% if other_user(@journey) %>
-        <% Journey.all.each do |j| %>
+    <% Journey.all.each do |j| %>
+        <% if j.user_id != current_user.id %>
             <ul>
                 <h4>User: <%= User.find(j.user_id).username %></h4>
                     <li><%= link_to "#{j.title}", journey_path(j) %></li>
@@ -38,6 +38,3 @@
 <br>
 <br>
 <h3> © 2020 DrifterHub <h3>
-
-
-

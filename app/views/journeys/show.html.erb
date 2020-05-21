@@ -22,7 +22,7 @@
         <%= button_to 'Edit Journey', edit_journey_path(@journey), method: :get %>
     <% end %>
     <br>
-    <%= button_to 'Return to Profile', user_path(current_user), method: :get %>
+    <%= button_to 'Return to Home', journeys_path, method: :get %>
 <% else %>
     <%= button_to 'Return', "/", method: :get %>
     <br>
