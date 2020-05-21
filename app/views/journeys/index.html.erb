@@ -8,9 +8,10 @@
 <br>
 <br>
 <br>
+<h3> Welcome <%= current_user.username %> !</h3>
 <h3>Your Journeys thus far:</h3>
 <br>
-<% if logged_in? %>
+<% if !logged_in? %>
     <% if current_user.journeys.count == 0 %>
         <h4> You have not written any posts yet </h4>
     <% end %>
@@ -18,8 +19,7 @@
     <% if !logged_in? %>
         <% current_user.journeys.each do |journey| %>
             <ul>
-                <h4>Post by: <%=current_user.username %></h4>
-                    <li><%= link_to "#{journey.title}", journey_path(journey)  %></li>
+                <li><%= link_to "#{journey.title}", journey_path(journey)  %></li>
             </ul>
         <% end %>
     <% end %>
@@ -30,7 +30,7 @@
     <% Journey.all.each do |j| %>
         <% if j.user_id != current_user.id %>
             <ul>
-                <h4>User: <%= User.find(j.user_id).username %></h4>
+                <h3>User: <%= User.find(j.user_id).username %></h3>
                     <li><%= link_to "#{j.title}", journey_path(j) %></li>
             </ul>
         <% end %>
