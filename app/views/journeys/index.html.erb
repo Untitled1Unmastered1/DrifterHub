@@ -1,8 +1,39 @@
-<%= @journeys.each do |j| %>
-   <p>Title: <%= j.title %></p>
-   <p>Date: <%= j.date %> </p>
-   <p>Miles: <%= j.miles %></p>
-   <p>Location: <%= j.location %></p>
-   <p>Description: <%= j.description %></p>
-   <br>
+<html>
+<h2 style="color:red;">  Welcome <%= current_user.username %>!</h2>
+<a href="/journeys/new" style="color:orange;"> Post a Journey of yours. </a><br>
+<a href='/logout' style="color:red;"> Log Out </a>
+<br>
+<br>
+<h3>Your Journeys thus far:</h3>
+<br>
+<% if logged_in? %>
+    <% if current_user.journeys.count == 0 %>
+        <h4> You have not written any posts yet </h4>
+    <% end %>
 <% end %>
+    <% if !logged_in? %>
+        <% current_user.journeys.each do |journey| %>
+            <ul>
+                <h4>Post by: <%=current_user.username %></h4>
+                    <li><%= link_to "#{journey.title}", journey_path(journey)  %></li>
+            </ul>
+        <% end %>
+    <% end %>
+<br>
+<br>
+<h3 style="color:gold;">Other Drifters' Journeys!</h3>
+<br>
+    <% if other_user(@journey) %>
+        <% Journey.all.each do |j| %>
+            <ul>
+                <h4>User: <%= User.find(j.user_id).username %></h4>
+                    <li><%= link_to "#{j.title}", journey_path(j) %></li>
+            </ul>
+        <% end %>
+    <% end %>
+<br>
+<br>
+<h3> © 2020 DrifterHub <h3>
+
+
+

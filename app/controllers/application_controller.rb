@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-    helper_method :current_user, :logged_in?, :owned_by_user?
+    helper_method :current_user, :logged_in?, :owned_by_user?, :other_user
 
     def welcome
         
@@ -19,7 +19,7 @@ class ApplicationController < ActionController::Base
         end
     end
 
-    def owned_by_user?(journey)
+    def owned_by_user?(journeys)
         if @journey != nil 
             if current_user.id == @journey.user_id
                 return true 
@@ -28,6 +28,18 @@ class ApplicationController < ActionController::Base
             end
         end
     end
+
+    def other_user(journey)
+        if @journey != nil 
+            if @journey.user_id != current_user.id 
+                return true 
+            else 
+                false 
+            end
+        end
+    end
+
+   
 end
 
 
