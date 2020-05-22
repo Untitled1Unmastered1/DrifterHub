@@ -25,8 +25,9 @@
 <br>
 <h3 style="color:gold;">Other Drifters' Journeys!</h3>
 <br>
+<% Journey.deleted_user %>
     <% Journey.all.each do |j| %>
-        <% if j.user_id != current_user.id && j. %>
+        <% if j.user_id != current_user.id  %>
             <ul>
                 <h3>User: <%= User.find(j.user_id).username %></h3>
                     <li><%= link_to "#{j.title}", journey_path(j) %></li>
