@@ -18,11 +18,13 @@ class UsersController < ApplicationController
     end
 
     def show
-
+      if !logged_in?
+      @user = User.find_by(params[:id])
+      end 
     end
 
-    def edit 
-
+    def edit
+      @user = User.find_by_id(params[:id])
     end
 
     def update

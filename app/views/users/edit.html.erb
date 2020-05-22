@@ -1,12 +1,11 @@
-<% if logged_in? %>
+<% if !logged_in? %>
 
 <%= render partial:'layouts/errors', locals: {object: @user} %>
 
 <h5><%= flash[:error] %></h5>
     <h2>Edit or Delete your account</h2>
-    <h5><%= flash[:error] %></h5>
     <%= form_for @user do |f| %>
-        <%= f.label 'Username' %>
+        <%= f.label :username %>
         <%= f.text_field :username %>
         <%= f.submit "Edit User Name" %>
     <% end %>
@@ -15,3 +14,4 @@
     <br>
     <%= button_to 'Return to Profile', user_path, method: :get %>
 <% end %>
+

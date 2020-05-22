@@ -1,5 +1,5 @@
 <% if !logged_in? %>
-    <h3><%= link_to  "New Post", new_journey_path, method: :get %> || <%= link_to 'Logout', logout_path, method: :delete %></h3>
+    <h3><%= link_to  "New Post", new_journey_path, method: :get %> || <%= link_to 'Logout', logout_path, method: :delete %> || <%= link_to 'Account Settings', edit_user_path(current_user), method: :get %></h3>
 <% else %>
     <%= link_to  "Return", "/welcome" , method: :get %>
 <% end %>
