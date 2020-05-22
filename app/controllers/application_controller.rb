@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-    helper_method :current_user, :logged_in?, :owned_by_user?, :other_user, :not_user
+    helper_method :current_user, :logged_in?, :owned_by_user?, :other_user, :not_user, :email_striper
 
     def welcome
         
@@ -50,17 +50,13 @@ class ApplicationController < ActionController::Base
         end
     end
 
+    def email_striper(email)
+        username = email.split(/@gmail.com/)
+        username[0]
+    end
+
    
 end
 
 
- # def require_login
-    #     if !logged_in? 
-    #         flash[:error] = "To access this page you must first login."
-    #         redirect_to root_path 
-    #     end
-    # end
-
-      # def logged_in?
-    #     !!current_user
-    # end
+ 
