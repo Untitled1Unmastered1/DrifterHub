@@ -20,4 +20,22 @@ class SessionsController < ApplicationController
         session.delete :user_id 
         redirect_to root_path 
     end
+
+    def omniauth
+        @user = User.find_or_create_by(uid: auth[:uid]) do |u|
+            u.username = email_striper(auth[:info][:email])
+            u.password = SecureRandom.hex
+        end
+        if @user.valid?
+            session[:user_id] = @user.id
+            redirect_to user_path(@user)
+        else 
+            @user.errors
+        end
+    end
+
+    private
+        def auth 
+            request.env['omniauth.auth']
+        end
 end
