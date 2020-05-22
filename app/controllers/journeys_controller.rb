@@ -1,5 +1,6 @@
 class JourneysController < ApplicationController
     before_action :logged_in?, only: [:new, :create, :index, :destroy]
+    # before_action :created_by_current_user, only: [:edit, :update, :destroy]
 
     def index
         @journeys = Journey.all 
@@ -25,6 +26,7 @@ class JourneysController < ApplicationController
     end
 
     def edit
+        validate 
         @journey = Journey.find_by_id(params[:id])
     end
 
@@ -46,9 +48,20 @@ class JourneysController < ApplicationController
         end
     end
 
+    def created_by_current_user
+        unless @journey.user_id == current_user.id 
+            flash[:danger] = "You cannot edit or delete this because you did not create it!"
+            redirect_to journeys_path
+        end
+    end
+
     private
 
     def journey_params
         params.require(:journey).permit(:title, :date, :miles, :location, :description)
+    end
+
+    def require_login
+        return head(:forbidden) unless session.include? :user_id
     end
 end

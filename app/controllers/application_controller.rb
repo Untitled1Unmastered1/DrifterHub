@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-    helper_method :current_user, :logged_in?, :owned_by_user?, :other_user
+    helper_method :current_user, :logged_in?, :owned_by_user?, :other_user, :not_user
 
     def welcome
         
@@ -16,6 +16,17 @@ class ApplicationController < ActionController::Base
         if !current_user
             flash[:error] = "To access this page you must first login."
             redirect_to root_path
+        end
+    end
+
+    def not_user?
+        !!current_user 
+    end
+
+    def validate
+        if !logged_in?
+            flash[:error] = " You are not logged in."
+            redirect_to login_path 
         end
     end
 
