@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get '/', to: 'application#welcome' 
   get '/login', to: 'sessions#login'
   post '/login', to: 'sessions#create'
+  get  '/auth/:provider/callback', to: 'sessions#omniauth'
   
 
   resources :users, only: [:new, :show, :create, :edit, :update, :destroy]
