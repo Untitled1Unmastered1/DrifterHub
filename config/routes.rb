@@ -5,7 +5,8 @@ Rails.application.routes.draw do
   get '/', to: 'application#welcome' 
   get '/login', to: 'sessions#login'
   post '/login', to: 'sessions#create'
-  get  '/auth/:provider/callback', to: 'sessions#omniauth'
+  get '/auth/:provider/callback', to: 'sessions#omniauth'
+  
   
 
   resources :users, only: [:new, :show, :create, :edit, :update, :destroy]
@@ -15,7 +16,7 @@ Rails.application.routes.draw do
 
 
   delete '/logout', to: 'sessions#destroy'
-  root 'application#welcome'
+  root 'application#welcome' 
 end
 
 #if you want to add any custom routes, add them at the top 
