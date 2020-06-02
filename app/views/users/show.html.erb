@@ -1,5 +1,14 @@
 <h3>Welcome back <%= current_user.username %></h3>
 
+<br>
+    <br>
+    <h2> Here are your Journeys ranked by length, in descending order so far: </h2>
+<% Journey.ranked_miles.each do |journey| %>
+
+    <h2><%= link_to journey.title, journey_path(journey) %> - <%= journey.miles %></h2>
+
+<% end %>
+
 <%= button_to "Add a new Journey", new_journey_path, method: :get %> 
 <br>
 <br>
@@ -10,11 +19,4 @@
 <br>
 <br>
 <%= button_to "Log Out", logout_path, method: 'delete' %>
-<br>
-    <br>
-    <h2> Here are your Journeys thus far: </h2>
-<% @journeys.each do |journey| %>
 
-    <h2><%= link_to journey.title, journey_path %></h2>
-
-<% end %>
