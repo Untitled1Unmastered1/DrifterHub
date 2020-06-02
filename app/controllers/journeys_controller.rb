@@ -1,6 +1,5 @@
 class JourneysController < ApplicationController
     before_action :logged_in?, only: [:new, :create, :index, :destroy]
-    # before_action :created_by_current_user, only: [:edit, :update, :destroy]
 
     def index
         @journeys = Journey.all 
