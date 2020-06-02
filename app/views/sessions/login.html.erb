@@ -1,6 +1,7 @@
 <br>
 <h3> Please log in </h3>
 <p> Or <%= link_to "Sign up", '/signup' %></p>
+<p> <%= link_to "Home", '/' %></p>
 <h5><%= flash[:error] %></h5>
 <br> 
 <%= form_tag('/login', method: :post) do %>
