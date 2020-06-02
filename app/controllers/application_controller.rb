@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-    helper_method :current_user, :logged_in?, :owned_by_user?, :other_user, :not_user, :email_striper, :current_journey
+    helper_method :current_user, :logged_in?, :owned_by_user?, :other_user, :not_user, :email_striper, :current_journey, :owned_by_journey?
 
     def welcome
         
@@ -39,6 +39,7 @@ class ApplicationController < ActionController::Base
             end
         end
     end
+
 
     def other_user(journey)
         if @journey != nil 

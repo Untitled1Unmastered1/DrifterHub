@@ -15,11 +15,11 @@ class Journey < ApplicationRecord
     end
 end
 
-    def self.desc_journeys
-        Journey.all.each do |journey|
-            @journey = journey.order(miles: :desc)
-        end
-    end
+    # def self.desc_journeys
+    #     Journey.all.each do |journey|
+    #         @journey = journey.order(miles: :desc)
+    #     end
+    # end
 
 #scope method that returns your journeys in descending order by the number of miles
 #view page 

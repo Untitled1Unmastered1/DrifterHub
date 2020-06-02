@@ -1,8 +1,12 @@
-<% if !logged_in? %>
-        <% @comments.each do |comment| %>
-            <ul>
-                <li><%= "#{comment.content}" %></li>
-            </ul>
-        <% end %>
-    <% end %>
+<% Comment.deleted_user %>
+<ul>
+<% @comments.each do |comment| %>
+    <li><%= "#{comment.content}" %></li>
+<% end %>
+</ul> 
+
+
+
+
+
 
