@@ -1,0 +1,8 @@
+<% if !logged_in? %>
+        <% @comments.each do |comment| %>
+            <ul>
+                <li><%= "#{comment.content}" %></li>
+            </ul>
+        <% end %>
+    <% end %>
+

@@ -61,7 +61,7 @@ class JourneysController < ApplicationController
         return head(:forbidden) unless session.include? :user_id
     end
 
-    def current_journey
-        @journey = Journey.find_by_id(params[:id])
-    end
+    # def current_journey
+    #     @journey = Journey.find_by_id(params[:id])
+    # end
 end

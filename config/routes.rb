@@ -6,13 +6,12 @@ Rails.application.routes.draw do
   get '/login', to: 'sessions#login'
   post '/login', to: 'sessions#create'
   get '/auth/:provider/callback', to: 'sessions#omniauth'
-  get 
-  
+  #only: [:new, :show, :create, :edit, :update, :destroy]
   
 
   resources :users, only: [:new, :show, :create, :edit, :update, :destroy]
   resources :journeys do 
-    resources :comments, only: [:new, :create, :show]
+    resources :comments, only: [:new, :create, :show, :index]
   end
 
 

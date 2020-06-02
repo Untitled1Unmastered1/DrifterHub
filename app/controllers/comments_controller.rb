@@ -2,6 +2,7 @@ class CommentsController < ApplicationController
 
     before_action :logged_in?
 
+
     def new
         @comment = Comment.new 
         @journey = Journey.find_by_id(params[:journey_id])
@@ -16,6 +17,10 @@ class CommentsController < ApplicationController
 
     def show 
         @comment = Comment.find_by_id(params[:journey_id][:comment])
+    end
+
+    def index
+        @comments = Comment.all 
     end
 
 end
