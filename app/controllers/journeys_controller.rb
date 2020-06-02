@@ -1,5 +1,6 @@
 class JourneysController < ApplicationController
     before_action :logged_in?, only: [:new, :create, :index, :destroy]
+    before_action :current_journey, only: [:show, :edit, :update, :destroy]
 
     def index
         @journeys = Journey.all 
@@ -21,17 +22,14 @@ class JourneysController < ApplicationController
     end
 
     def show
-        @journey = Journey.find_by_id(params[:id])
     end
 
     def edit
         validate 
-        @journey = Journey.find_by_id(params[:id])
     end
 
 
     def update
-        @journey = Journey.find_by_id(params[:id])
         if @journey.update(journey_params)
             redirect_to journey_path(@journey)
         else 
@@ -40,7 +38,6 @@ class JourneysController < ApplicationController
     end
 
     def destroy
-        @journey = Journey.find_by_id(params[:id])
         if current_user 
             @journey.destroy 
             redirect_to journeys_path
@@ -62,5 +59,9 @@ class JourneysController < ApplicationController
 
     def require_login
         return head(:forbidden) unless session.include? :user_id
+    end
+
+    def current_journey
+        @journey = Journey.find_by_id(params[:id])
     end
 end

@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
 
-    before_action :logged_in?, only: [:show, :edit, :update, :destroy] 
+    before_action :logged_in?, only: [:show, :edit, :update, :destroy]
+    before_action :find_user, only: [:edit, :destroy]
 
     def new
         @user = User.new
@@ -23,7 +24,6 @@ class UsersController < ApplicationController
     end
 
     def edit
-      @user = User.find_by_id(params[:id])
     end
 
     def update
@@ -37,7 +37,6 @@ class UsersController < ApplicationController
     end
 
     def destroy 
-      @user = User.find_by_id(params[:id])
       @user.destroy 
       redirect_to root_path 
       flash[:error] = "Account deleted."
@@ -47,5 +46,9 @@ class UsersController < ApplicationController
 
     def user_params
         params.require(:user).permit(:username, :password)
+    end
+
+    def find_user 
+      @user = User.find_by_id(params[:id])
     end
 end
