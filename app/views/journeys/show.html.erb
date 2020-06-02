@@ -24,6 +24,8 @@
     <br>
     <%= button_to 'Add Comment', new_journey_comment_path(@journey), method: :get %>
     <br>
+    <%= button_to 'Comments Thread', journey_comments_path(@journey), method: :get %>
+    <br>
     <% if owned_by_user?(@journey)%>
         <%= button_to 'Delete Journey', journey_path(@journey), method: :delete %>
     <% end %>
