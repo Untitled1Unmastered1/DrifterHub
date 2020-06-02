@@ -1,7 +1,7 @@
 class CommentsController < ApplicationController
 
     before_action :logged_in?
-    # before_action :current_journey, only: [:index]
+
 
 
     def new
@@ -28,6 +28,5 @@ class CommentsController < ApplicationController
             @comments = Comment.all
         end
     end
-
 
 end
