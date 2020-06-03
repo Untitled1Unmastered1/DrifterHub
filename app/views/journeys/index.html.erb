@@ -17,20 +17,20 @@
     <% if !logged_in? %>
         <% current_user.journeys.each do |journey| %>
             <ul>
-                <li><%= link_to "#{journey.title}", journey_path(journey)  %></li>
+                <h3><%= link_to "#{journey.title}", journey_path(journey)  %></h3>
             </ul>
         <% end %>
     <% end %>
 <br>
 <br>
-<h3 style="color:gold;">Other Drifters' Journeys!</h3>
+<h3 style="color:gold;">Other Drifters' Journeys ranked by length! </h3>
 <br>
 <% Journey.deleted_user %>
-    <% Journey.all.each do |j| %>
+    <% Journey.ranked_miles.each do |j| %>
         <% if j.user_id != current_user.id  %>
             <ul>
-                <h3>User: <%= User.find(j.user_id).username %></h3>
-                    <li><%= link_to "#{j.title}", journey_path(j) %></li>
+                <h3><%= link_to j.title, journey_path(j) %> - <%= j.miles %> Miles </h3>
+                    <h4>User: <%= User.find(j.user_id).username %></h4>
             </ul>
         <% end %>
     <% end %>

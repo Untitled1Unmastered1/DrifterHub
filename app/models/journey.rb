@@ -21,9 +21,6 @@ class Journey < ApplicationRecord
 end
 
     
-#scope method that returns your journeys in descending order by the number of miles
-#view page 
-#route that render that view page 
-#review scope methods, review how to render data from scope method to show page 
+
 
 end
