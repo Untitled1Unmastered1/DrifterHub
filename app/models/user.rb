@@ -10,7 +10,6 @@ class User < ApplicationRecord
     validates :username, uniqueness: {message: "Username already in use, please try again." }
 
 
-    
 
     
 

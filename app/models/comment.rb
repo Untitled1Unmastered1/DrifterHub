@@ -12,5 +12,4 @@ class Comment < ApplicationRecord
     end 
 
 
-
 end
