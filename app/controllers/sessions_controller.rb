@@ -28,7 +28,7 @@ class SessionsController < ApplicationController
         end
         if @user.valid?
             session[:user_id] = @user.id
-            redirect_to user_path(@user)
+            redirect_to journeys_path(@user)
         else 
             @user.errors
         end

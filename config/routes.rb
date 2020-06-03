@@ -6,7 +6,6 @@ Rails.application.routes.draw do
   get '/login', to: 'sessions#login'
   post '/login', to: 'sessions#create'
   get '/auth/:provider/callback', to: 'sessions#omniauth'
-  #only: [:new, :show, :create, :edit, :update, :destroy]
   
 
   resources :users, only: [:new, :show, :create, :edit, :update, :destroy]
@@ -14,7 +13,7 @@ Rails.application.routes.draw do
     resources :comments, only: [:new, :create, :show, :index]
   end
 
-
+  
   delete '/logout', to: 'sessions#destroy'
   root 'application#welcome' 
 end

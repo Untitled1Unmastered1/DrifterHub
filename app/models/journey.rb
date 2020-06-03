@@ -12,11 +12,11 @@ class Journey < ApplicationRecord
             end
             journey.destroy 
         end
-    end
+    end #test if we can eliminate the comment deletion function, since the show page does not render comments anymore 
 
     def self.ranked_miles 
         journeys = Journey.order("miles DESC")
-        return journeys
+        return journeys #can i use validation for this to only include integers 
     end
 end
 
