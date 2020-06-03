@@ -1,8 +1,5 @@
 class CommentsController < ApplicationController
-
     before_action :logged_in?
-
-
 
     def new
         @comment = Comment.new 
