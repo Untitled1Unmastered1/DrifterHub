@@ -19,8 +19,7 @@ class UsersController < ApplicationController
 
     def show
       if !logged_in?
-      @user = User.find_by(params[:id])
-      # journeys = current_user.journeys
+      find_user 
       end 
     end
 

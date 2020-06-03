@@ -1,9 +1,5 @@
 class ApplicationController < ActionController::Base
-    helper_method :current_user, :logged_in?, :owned_by_user?, :other_user, :not_user, :email_striper, :current_journey, :owned_by_journey?
-
-    def welcome
-        
-    end
+    helper_method :current_user, :logged_in?, :validate, :email_striper, :current_journey
 
 
     def current_user
@@ -11,16 +7,11 @@ class ApplicationController < ActionController::Base
     end
 
     
-
     def logged_in?
         if !current_user
             flash[:error] = "To access this page you must first login."
             redirect_to root_path
         end
-    end
-
-    def not_user?
-        !!current_user 
     end
 
     def validate
@@ -30,26 +21,6 @@ class ApplicationController < ActionController::Base
         end
     end
 
-    def owned_by_user?(journeys)
-        if @journey != nil 
-            if current_user.id == @journey.user_id
-                return true 
-            else 
-                false 
-            end
-        end
-    end
-
-
-    def other_user(journey)
-        if @journey != nil 
-            if @journey.user_id != current_user.id 
-                return true 
-            else 
-                false 
-            end
-        end
-    end
 
     def email_striper(email)
         username = email.split(/@gmail.com/)
