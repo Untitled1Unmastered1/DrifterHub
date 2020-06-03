@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
-    helper_method :current_user, :logged_in?, :validate, :email_striper, :current_journey
+    helper_method :current_user, :logged_in?, :email_striper, :current_journey, :owned_by_user?
 
-
+    
     def current_user
         @current_user ||= User.find_by_id(session[:user_id])
     end
@@ -18,6 +18,16 @@ class ApplicationController < ActionController::Base
         if !logged_in?
             flash[:error] = " You are not logged in."
             redirect_to login_path 
+        end
+    end
+
+    def owned_by_user?(journeys)
+        if @journey != nil 
+            if current_user.id == @journey.user_id
+                return true 
+            else 
+                false 
+            end
         end
     end
 

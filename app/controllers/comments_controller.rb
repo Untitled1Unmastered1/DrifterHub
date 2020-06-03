@@ -9,7 +9,7 @@ class CommentsController < ApplicationController
     def create 
         @comment = Comment.new(content: params[:comment][:content], user_id: current_user.id, journey_id: params[:journey_id])
         if @comment.save
-            redirect_to journey_path(@comment.journey_id)
+            redirect_to journey_comments_path(@comment.journey_id)
         end 
     end
 
