@@ -27,12 +27,10 @@ class SessionsController < ApplicationController
             u.username = email_striper(auth[:info][:email])
             u.password = SecureRandom.hex
         end
-        if @user.valid?
-            session[:user_id] = @user.id
-            redirect_to user_path(@user) #journeys_path worked earlier
-        else 
-            @user.errors
-        end
+
+        session[:user_id] = @user.id
+        redirect_to journeys_path 
+        
     end
 
     private
