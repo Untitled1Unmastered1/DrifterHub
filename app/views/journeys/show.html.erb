@@ -16,6 +16,8 @@
     <br>
     <% if owned_by_user?(@journey)%>
         <%= button_to 'Delete Journey', journey_path(@journey), method: :delete %>
+        <br>
+        <%= button_to 'Edit Journey', edit_journey_path(@journey), method: :get %>
     <% end %>
     <br>
     <%= button_to 'Return to Home', journeys_path, method: :get %>

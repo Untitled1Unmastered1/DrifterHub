@@ -13,7 +13,8 @@ class UsersController < ApplicationController
             session[:user_id] = @user.id 
             redirect_to journeys_path(@user)
           else 
-            redirect_to new_user_path 
+            redirect_to new_user_path
+            flash[:error] ="Username is not available, please try again."
           end
     end
 

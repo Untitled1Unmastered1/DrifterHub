@@ -24,8 +24,8 @@ class JourneysController < ApplicationController
     def show
     end
 
-    def edit
-        validate 
+    def edit #validate worked 
+        created_by_current_user
     end
 
 
@@ -46,7 +46,7 @@ class JourneysController < ApplicationController
 
     def created_by_current_user
         unless @journey.user_id == current_user.id 
-            flash[:danger] = "You cannot edit or delete this because you did not create it!"
+            flash[:error] = "You cannot edit or delete this because you did not create it!"
             redirect_to journeys_path
         end
     end
