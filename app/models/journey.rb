@@ -1,6 +1,6 @@
 class Journey < ApplicationRecord
   validates :title, :date, :miles, :location, :description, presence: true 
-  validates :miles, numericality: { only_integer: true }
+#   validates :miles, numericality: { only_integer: true }
   belongs_to :user
   has_many :comments
   has_many :users, through: :comments 

@@ -17,13 +17,13 @@
     <% if !logged_in? %>
         <% current_user.journeys.each do |journey| %>
             <ul>
-                <h3><%= link_to "#{journey.title}", journey_path(journey) %> - <%= journey.date %></h3>
+                <h3><%= link_to "#{journey.title}", journey_path(journey) %></h3>
             </ul>
         <% end %>
     <% end %>
 <br>
 <br>
-<h3 style="color:gold;">Other Drifters' Journeys ranked by length! </h3>
+<h3 style="color:orange;">Other Drifters' Journeys ranked by length! </h3>
 <br>
 <% Journey.deleted_user %>
     <% Journey.ranked_miles.each do |j| %>
