@@ -17,7 +17,7 @@
     <% if !logged_in? %>
         <% current_user.journeys.each do |journey| %>
             <ul>
-                <h3><%= link_to "#{journey.title}", journey_path(journey)  %></h3>
+                <h3><%= link_to "#{journey.title}", journey_path(journey) %> - <%= journey.date %></h3>
             </ul>
         <% end %>
     <% end %>

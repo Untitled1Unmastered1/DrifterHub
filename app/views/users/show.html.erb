@@ -1,4 +1,4 @@
-<h3>Welcome back <%= current_user.username %></h3>
+<h3>Welcome back, <%= current_user.username %>! </h3>
 
 
 <% if !logged_in? %>
@@ -6,10 +6,10 @@
         <h4> You need to add some Journeys! </h4>
     <% end %>
 <% end %>
+<h2> Here are your Journeys ranked by length, in descending order so far: </h2>
     <% Journey.ranked_miles.each do |j| %>
         <% if j.user_id == current_user.id  %>
             <ul>
-                <h2> Here are your Journeys ranked by length, in descending order so far: </h2>
                 <h3><%= link_to j.title, journey_path(j) %> - <%= j.miles %> Miles </h3>
             </ul>
         <% end %>

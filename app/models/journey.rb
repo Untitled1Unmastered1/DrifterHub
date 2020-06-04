@@ -4,6 +4,7 @@ class Journey < ApplicationRecord
   belongs_to :user
   has_many :comments
   has_many :users, through: :comments 
+  
 
     def self.deleted_user
         Journey.all.each do |journey|
@@ -16,8 +17,10 @@ class Journey < ApplicationRecord
 
     def self.ranked_miles 
         journeys = Journey.order("miles DESC")
-        return journeys #can i use validation for this to only include integers 
+        return journeys 
     end
+
+
 end
 
     

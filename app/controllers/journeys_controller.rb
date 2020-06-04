@@ -3,7 +3,7 @@ class JourneysController < ApplicationController
     before_action :current_journey, only: [:show, :edit, :update, :destroy]
 
     def index
-        @journeys = Journey.all 
+        @journeys = Journey.all
     end
 
     def new
