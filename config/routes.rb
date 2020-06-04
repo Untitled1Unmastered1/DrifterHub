@@ -13,7 +13,6 @@ Rails.application.routes.draw do
     resources :comments, only: [:new, :create, :show, :index]
   end
 
-  
   delete '/logout', to: 'sessions#destroy'
   root 'application#welcome' 
 end

@@ -7,9 +7,10 @@ class SessionsController < ApplicationController
 
     def create
         @user = User.find_by(username: params[:user][:username])
+
         if @user && @user.authenticate(params[:user][:password])
             session[:user_id] = @user.id 
-            redirect_to journeys_path(@user)
+            redirect_to journeys_path #if bug then journeys_path(@user)
         else 
             flash[:error] = "User not found. Please login with the correct credentials."
             redirect_to login_path 
@@ -28,7 +29,7 @@ class SessionsController < ApplicationController
         end
         if @user.valid?
             session[:user_id] = @user.id
-            redirect_to journeys_path(@user)
+            redirect_to journeys_path
         else 
             @user.errors
         end
