@@ -3,25 +3,20 @@
 <% else %>
     <%= link_to  "Return", "/welcome" , method: :get %>
 <% end %>
-<br>
-<br>
-<br>
-<h3> Welcome <%= current_user.username %>!</h3>
+
+<h3> Welcome <%= current_user.username %>! These are your Journeys so far:</h3>
 <h5><%= flash[:error] %></h5>
-<h3>Your Journeys thus far:</h3>
 <br>
-<% if logged_in? %>
-    <% if current_user.journeys.count == 0 %>
-        <h4> You have not written any posts yet </h4>
+<% if current_user.journeys.count == 0 %>
+    <h4> You have not written any posts yet </h4>
+<br>
+<% else %>
+<% current_user.journeys.each do |journey| %>
+    <ul>
+        <h3><%= link_to "#{journey.title}", journey_path(journey) %></h3>
+    </ul>
     <% end %>
 <% end %>
-    <% if logged_in? %>
-        <% current_user.journeys.each do |journey| %>
-            <ul>
-                <h3><%= link_to "#{journey.title}", journey_path(journey) %></h3>
-            </ul>
-        <% end %>
-    <% end %>
 <br>
 <br>
 <h3 style="color:orange;">Other Drifters' Journeys ranked by length! </h3>

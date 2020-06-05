@@ -1,6 +1,6 @@
 class JourneysController < ApplicationController
-    before_action :logged_in?, only: [:new, :create, :index, :destroy]#cut it 
-    before_action :current_journey, only: [:show, :edit, :update, :destroy]#keep this 
+    before_action :logged_in? 
+    before_action :current_journey, only: [:show, :edit, :update, :destroy] 
 
     def index
         @journeys = Journey.all
@@ -24,8 +24,11 @@ class JourneysController < ApplicationController
     def show
     end
 
-    def edit 
-        created_by_current_user
+    def edit
+        unless @journey.user_id == current_user.id
+            flash[:error] = "You cannot edit or delete this because you did not create it!"
+            redirect_to journeys_path
+        end
     end
 
 
@@ -40,13 +43,6 @@ class JourneysController < ApplicationController
     def destroy
         if current_user 
             @journey.destroy 
-            redirect_to journeys_path
-        end
-    end
-
-    def created_by_current_user
-        unless @journey.user_id == current_user.id 
-            flash[:error] = "You cannot edit or delete this because you did not create it!"
             redirect_to journeys_path
         end
     end

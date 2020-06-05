@@ -6,7 +6,7 @@ class User < ApplicationRecord
 
     has_secure_password 
 
-    validates :username, :password, presence: true 
+    validates :username, presence: true 
     validates :username, uniqueness: {message: "Username already in use, please try again." }
 
     

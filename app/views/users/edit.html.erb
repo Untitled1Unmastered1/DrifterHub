@@ -1,4 +1,4 @@
-<% if !logged_in? %>
+
 
 <%= render partial:'layouts/errors', locals: {object: @user} %>
 
@@ -13,5 +13,5 @@
     <%= button_to 'Deactivate Account', user_path, method: :delete %>
     <br>
     <%= button_to 'Return to Profile', user_path, method: :get %>
-<% end %>
+
 

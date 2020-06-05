@@ -1,10 +1,9 @@
 <h3>Welcome back, <%= current_user.username %>! </h3>
 
 
-<% if !logged_in? %>
-    <% if current_user.journeys.count == 0 %>
-        <h4> You need to add some Journeys! </h4>
-    <% end %>
+
+<% if current_user.journeys.count == 0 %>
+    <h4> You need to add some Journeys! </h4>
 <% end %>
 <h2> Here are your Journeys ranked by length, in descending order so far: </h2>
     <% Journey.ranked_miles.each do |j| %>

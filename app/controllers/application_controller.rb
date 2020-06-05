@@ -11,10 +11,10 @@ class ApplicationController < ActionController::Base
     end
 
 
-    def validate #need to get rid of this, or implement it into a better method 
-        if !logged_in?
-            flash[:error] = " You are not logged in."
-            redirect_to login_path 
+    def validate 
+        unless @user.id == current_user.id 
+            flash[:error] = "Restricted area."
+            redirect_to journeys_path
         end
     end
 
@@ -33,7 +33,7 @@ class ApplicationController < ActionController::Base
         username = email.split(/@gmail.com/)
         username[0]
     end
-    
+
 end
 
 
