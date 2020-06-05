@@ -1,7 +1,6 @@
 class SessionsController < ApplicationController
 
     def login
-    
     end
 
 
@@ -10,7 +9,7 @@ class SessionsController < ApplicationController
 
         if @user && @user.authenticate(params[:user][:password])
             session[:user_id] = @user.id 
-            redirect_to journeys_path #if bug then journeys_path
+            redirect_to journeys_path 
         else 
             flash[:error] = "User not found. Please login with the correct credentials."
             redirect_to login_path 

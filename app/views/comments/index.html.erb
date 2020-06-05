@@ -11,7 +11,7 @@
     <% end %>
 </fieldset>
 
-<% if !logged_in? %>
+<% if logged_in? %>
     <br>
     <%= button_to 'Add Comment', new_journey_comment_path, method: :get %>
     <br>

@@ -1,6 +1,6 @@
 class JourneysController < ApplicationController
-    before_action :logged_in?, only: [:new, :create, :index, :destroy]
-    before_action :current_journey, only: [:show, :edit, :update, :destroy]
+    before_action :logged_in?, only: [:new, :create, :index, :destroy]#cut it 
+    before_action :current_journey, only: [:show, :edit, :update, :destroy]#keep this 
 
     def index
         @journeys = Journey.all
@@ -24,7 +24,7 @@ class JourneysController < ApplicationController
     def show
     end
 
-    def edit #validate worked 
+    def edit 
         created_by_current_user
     end
 
@@ -57,8 +57,8 @@ class JourneysController < ApplicationController
         params.require(:journey).permit(:title, :date, :miles, :location, :description)
     end
 
-    def require_login
-        return head(:forbidden) unless session.include? :user_id
+    def current_journey
+        @journey = Journey.find_by_id(params[:id])
     end
 
 end

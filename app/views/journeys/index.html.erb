@@ -1,4 +1,4 @@
-<% if !logged_in? %>
+<% if logged_in? %>
     <h3 style="color:red;"><%= link_to  "New Post", new_journey_path, method: :get %> || <%= link_to 'Logout', logout_path, method: :delete %> || <%= link_to 'Your Profile', user_path(current_user), method: :get %></h3>
 <% else %>
     <%= link_to  "Return", "/welcome" , method: :get %>
@@ -10,12 +10,12 @@
 <h5><%= flash[:error] %></h5>
 <h3>Your Journeys thus far:</h3>
 <br>
-<% if !logged_in? %>
+<% if logged_in? %>
     <% if current_user.journeys.count == 0 %>
         <h4> You have not written any posts yet </h4>
     <% end %>
 <% end %>
-    <% if !logged_in? %>
+    <% if logged_in? %>
         <% current_user.journeys.each do |journey| %>
             <ul>
                 <h3><%= link_to "#{journey.title}", journey_path(journey) %></h3>

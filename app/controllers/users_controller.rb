@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
-    before_action :logged_in?, only: [:show, :edit, :update, :destroy]
-    before_action :find_user, only: [:edit, :destroy]
+    before_action :logged_in?, only: [:show, :edit, :update, :destroy]#cut it 
+    before_action :find_user, only: [:edit, :destroy]#maybe add to helpers instead of here, depends 
 
     def new
         @user = User.new
@@ -26,6 +26,12 @@ class UsersController < ApplicationController
     end
 
     def edit
+      if current_user == @user.id 
+        redirect_to edit_user_path
+      else 
+        redirect_to journeys_path
+        flash[:error] = "You are not authorized to access this page."
+      end
     end
 
     def update

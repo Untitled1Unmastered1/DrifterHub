@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-    before_action :logged_in?
+    before_action :logged_in?#nope, literally not doing anything 
 
     def new
         @comment = Comment.new 

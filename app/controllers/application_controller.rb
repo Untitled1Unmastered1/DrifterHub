@@ -1,27 +1,24 @@
 class ApplicationController < ActionController::Base
-    helper_method :current_user, :logged_in?, :email_striper, :current_journey, :owned_by_user?
+    helper_method :current_user, :logged_in?, :email_striper, :owned_by_user?
 
     
     def current_user
         @current_user ||= User.find_by_id(session[:user_id])
     end
 
-    
     def logged_in?
-        if !current_user
-            flash[:error] = "To access this page you must first login."
-            redirect_to root_path
-        end
+        !!current_user
     end
 
-    def validate
+
+    def validate #need to get rid of this, or implement it into a better method 
         if !logged_in?
             flash[:error] = " You are not logged in."
             redirect_to login_path 
         end
     end
 
-    def owned_by_user?(journeys)
+    def owned_by_user?(journeys) #improve this, or scrap it. see created_by_user in journeys controller 
         if @journey != nil 
             if current_user.id == @journey.user_id
                 return true 
@@ -36,12 +33,7 @@ class ApplicationController < ActionController::Base
         username = email.split(/@gmail.com/)
         username[0]
     end
-
-    def current_journey
-        @journey = Journey.find_by_id(params[:id])
-    end
-
-   
+    
 end
 
 
