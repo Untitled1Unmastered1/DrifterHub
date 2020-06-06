@@ -8,6 +8,9 @@ class User < ApplicationRecord
 
     validates :username, presence: true 
     validates :username, uniqueness: {message: "Username already in use, please try again." }
+    # scope :most_recent, -> {User.journeys.order("date DESC")}
+
+    
 
     
 

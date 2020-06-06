@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-    helper_method :current_user, :logged_in?, :email_striper, :owned_by_user?
+    helper_method :current_user, :logged_in?, :validate, :owned_by_user?, :email_striper
 
     
     def current_user
@@ -16,9 +16,9 @@ class ApplicationController < ActionController::Base
             flash[:error] = "Restricted area."
             redirect_to journeys_path
         end
-    end
+    end 
 
-    def owned_by_user?(journeys) #improve this, or scrap it. see created_by_user in journeys controller 
+    def owned_by_user?(journeys) 
         if @journey != nil 
             if current_user.id == @journey.user_id
                 return true 

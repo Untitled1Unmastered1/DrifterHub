@@ -20,7 +20,7 @@ class CommentsController < ApplicationController
 
     def index
         if params[:journey_id] && journey = Journey.find_by(id: params[:journey_id]) 
-            @comments = journey.comments 
+            @comments = journey.comments
         else
             @comments = Comment.all
         end

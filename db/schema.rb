@@ -16,6 +16,8 @@ ActiveRecord::Schema.define(version: 2020_05_16_015416) do
     t.text "content"
     t.integer "user_id"
     t.integer "journey_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "journeys", force: :cascade do |t|

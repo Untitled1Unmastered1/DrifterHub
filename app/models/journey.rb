@@ -1,6 +1,5 @@
 class Journey < ApplicationRecord
   validates :title, :date, :miles, :location, :description, presence: true 
-#   validates :miles, numericality: { only_float: true }
   belongs_to :user
   has_many :comments
   has_many :users, through: :comments 
@@ -19,7 +18,6 @@ class Journey < ApplicationRecord
         journeys = Journey.order("miles DESC")
         return journeys 
     end
-
 
 end
 

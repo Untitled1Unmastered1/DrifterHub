@@ -2,10 +2,10 @@
 <% unless @comments.count == 0 %>
     <fieldset> 
         <legend><h4>Comments Thread:</h4></legend>
-            <% @comments.each do |comment| %>
+            <% Comment.most_recent.each do |comment| %>
                 <br>
                     <ul>
-                        <li><p><%= comment.content %> by <%= comment.user.username %></p></li>
+                        <li><p><%= comment.content %> by <%= comment.user.username %> - <%= comment.created_at %></p></li>
                     </ul>
             <% end %>
     <% end %>
