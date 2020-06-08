@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-    helper_method :current_user, :logged_in?, :validate, :owned_by_user?, :email_striper
+    helper_method :current_user, :logged_in?, :validate, :owned_by_user?, :email_striper, :current_journey
 
     
     def current_user
@@ -32,6 +32,10 @@ class ApplicationController < ActionController::Base
     def email_striper(email)
         username = email.split(/@gmail.com/)
         username[0]
+    end
+
+    def current_journey
+        @journey = Journey.find_by_id(params[:id])
     end
 
 end

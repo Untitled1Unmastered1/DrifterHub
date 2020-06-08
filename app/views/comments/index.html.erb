@@ -2,7 +2,7 @@
 <% unless @comments.count == 0 %>
     <fieldset> 
         <legend><h4>Comments Thread:</h4></legend>
-            <% Comment.most_recent.each do |comment| %>
+            <% @comments.each do |comment| %>
                 <br>
                     <ul>
                         <li><p><%= comment.content %> by <%= comment.user.username %> - <%= comment.normalize_date %></p></li>
@@ -10,6 +10,8 @@
             <% end %>
     <% end %>
 </fieldset>
+
+
 
 <% if logged_in? %>
     <br>

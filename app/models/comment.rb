@@ -11,11 +11,11 @@ class Comment < ApplicationRecord
             end
         end 
     end 
- 
+
 
     def normalize_date
         self.created_at = created_at.strftime("%B %-d, %Y %-l:%M %p")
-    end
+    end 
 
 
 end

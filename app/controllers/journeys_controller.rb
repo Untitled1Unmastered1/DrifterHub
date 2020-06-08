@@ -53,8 +53,5 @@ class JourneysController < ApplicationController
         params.require(:journey).permit(:title, :date, :miles, :location, :description)
     end
 
-    def current_journey
-        @journey = Journey.find_by_id(params[:id])
-    end
 
 end
