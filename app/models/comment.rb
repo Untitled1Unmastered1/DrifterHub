@@ -17,5 +17,4 @@ class Comment < ApplicationRecord
         self.created_at = created_at.strftime("%B %-d, %Y %-l:%M %p")
     end 
 
-
 end

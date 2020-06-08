@@ -34,11 +34,45 @@ h5 {
     margin-top: 10px;
     margin-left: 3px;
     text-align: center
-} 
+}
+
+h3 {
+    margin-top: 10px;
+    margin-left: 3px;
+    text-align: center
+}
+
+h4 {
+    margin-top: 10px;
+    margin-left: 3px;
+    text-align: center
+}
+
+
 
 #welcome {
     text-align: center
 }
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: yellow;
+  }
+  
+  li {
+    float: center;
+  }
+  
+  li a {
+    display: block;
+    color: red;
+    text-align: center;
+    padding: 20px 16px;
+    text-decoration: none;
+  }
 
 
 .field_with_errors {

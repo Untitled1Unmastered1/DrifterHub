@@ -1,8 +1,4 @@
-<% if logged_in? %>
-    <h3 style="color:red;"><%= link_to  "New Post", new_journey_path, method: :get %> || <%= link_to 'Logout', logout_path, method: :delete %> || <%= link_to 'Your Profile', user_path(current_user), method: :get %></h3>
-<% else %>
-    <%= link_to  "Return", "/welcome" , method: :get %>
-<% end %>
+<%= render 'layouts/footer' %>
 
 <h3> Welcome <%= current_user.username %>! These are your Journeys so far:</h3>
 <h5><%= flash[:error] %></h5>
@@ -19,8 +15,9 @@
 <% end %>
 <br>
 <br>
-<h3 style="color:orange;">Other Drifters' Journeys ranked by length! </h3>
-<br>
+    <br>
+<h3 style="color:red;"> || Other Drifters' Journeys ranked by length! ||</h3>
+    <br>
 <% Journey.deleted_user %>
     <% Journey.ranked_miles.each do |j| %>
         <% if j.user_id != current_user.id  %>
