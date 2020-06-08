@@ -5,7 +5,7 @@
             <% Comment.most_recent.each do |comment| %>
                 <br>
                     <ul>
-                        <li><p><%= comment.content %> by <%= comment.user.username %> - <%= comment.created_at %></p></li>
+                        <li><p><%= comment.content %> by <%= comment.user.username %> - <%= comment.normalize_date %></p></li>
                     </ul>
             <% end %>
     <% end %>
