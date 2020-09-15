@@ -26,12 +26,12 @@ class UsersController < ApplicationController
       validate 
     end
 
-    def update
+    def update #rendering done 
       if @user.valid?
         @user.update(username: params[:user][:username])
         redirect_to user_path(@user)
-      else 
-        redirect_to edit_user_path 
+      else
+        render :edit 
       end
     end
 
