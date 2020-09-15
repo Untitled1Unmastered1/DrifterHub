@@ -1,7 +1,8 @@
 class User < ApplicationRecord
 
     has_many :journeys  
-    has_many :comments
+    has_many :comments #what if we switched this to a many to many relationship 
+    #has_many :comments, through: journeys 
     has_many :commented_journeys, through: :comments, source: :journey 
 
     has_secure_password 
