@@ -16,8 +16,9 @@ class JourneysController < ApplicationController
         if @journey.valid?
             @journey.save 
             redirect_to journey_path(@journey)
-        else 
-            redirect_to new_journey_path 
+        else
+            flash[:error] = "Please fill out all portions of the form."
+            render :new 
         end
     end
 
