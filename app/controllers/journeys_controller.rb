@@ -37,7 +37,8 @@ class JourneysController < ApplicationController
         if @journey.update(journey_params)
             redirect_to journey_path(@journey)
         else 
-            redirect_to edit_journey_path 
+            flash[:error] = "Please fill out all portions of Journey"
+            render :edit 
         end
     end
 
