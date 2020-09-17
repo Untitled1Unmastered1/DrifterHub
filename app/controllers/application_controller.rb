@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-    helper_method :current_user, :logged_in?, :validate, :owned_by_user?, :email_striper, :current_journey
+    helper_method :current_user, :logged_in?, :validate, :email_striper, :current_journey
 
     
     def current_user #setting the instance of @current_user to whatever user is currently in the session 
