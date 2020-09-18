@@ -13,11 +13,6 @@ class CommentsController < ApplicationController
         end 
     end
 
-    def show 
-        @comment = Comment.find_by_id(params[:journey_id][:comment])
-    end
-
-
     def index
         if params[:journey_id] && journey = Journey.find_by(id: params[:journey_id]) 
             @comments = journey.comments.most_recent 

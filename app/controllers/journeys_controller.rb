@@ -2,15 +2,15 @@ class JourneysController < ApplicationController
     before_action :logged_in? 
     before_action :current_journey, only: [:show, :edit, :update, :destroy] 
 
-    def index
+    def index#controller action, get request for all journeys 
         @journeys = Journey.all 
     end
 
-    def new
+    def new#controller action, get request for a new journey form 
         @journey = Journey.new 
     end
 
-    def create
+    def create#controller action, post request which persists journey object to db 
         @journey = Journey.new(journey_params)
         @journey.user_id = session[:user_id]
         if @journey.valid?
@@ -22,10 +22,10 @@ class JourneysController < ApplicationController
         end
     end
 
-    def show
+    def show#controller action, get request to show specific instance of journey 
     end
 
-    def edit
+    def edit#controller action, get request for edit form 
         unless @journey.user_id == current_user.id
             flash[:error] = "You cannot edit or delete this because you did not create it!"
             redirect_to journeys_path
@@ -33,7 +33,7 @@ class JourneysController < ApplicationController
     end
 
 
-    def update
+    def update#controller action, patch request to update a journey 
         if @journey.update(journey_params)
             redirect_to journey_path(@journey)
         else 
@@ -42,7 +42,7 @@ class JourneysController < ApplicationController
         end
     end
 
-    def destroy
+    def destroy#controller action, delete request, deletes object from db 
         if current_user 
             @journey.destroy 
             redirect_to journeys_path
@@ -51,7 +51,7 @@ class JourneysController < ApplicationController
 
     private
 
-    def journey_params
+    def journey_params#
         params.require(:journey).permit(:title, :date, :miles, :location, :description)
     end
 
