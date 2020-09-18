@@ -16,7 +16,7 @@ class Journey < ApplicationRecord
 
     def self.ranked_miles 
         journeys = Journey.order("miles DESC")
-        return journeys 
+        journeys 
     end
 
 end
