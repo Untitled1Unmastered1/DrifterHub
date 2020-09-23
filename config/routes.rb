@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get '/login', to: 'sessions#login'
   post '/login', to: 'sessions#create'
   get '/auth/google_oauth2/callback', to: 'sessions#omniauth'
+  get '/users/:id/commented_journeys', to: 'users#commented_journeys', as: :commented_journeys
   
 
   resources :users, only: [:new, :show, :create, :edit, :update, :destroy]

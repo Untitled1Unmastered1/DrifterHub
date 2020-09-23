@@ -18,7 +18,7 @@ class Journey < ApplicationRecord
     def self.ranked_miles#scope method, ranks journeys by its miles, in descending order 
         journeys = Journey.order("miles DESC")
         journeys 
-    end
+    end #scope for ranked miles rather than class method 
 
 end
 

@@ -1,4 +1,4 @@
-<h3>Welcome back, <%= current_user.username %>! </h3>
+<h3>Welcome back, <%= current_user.username %>! </h3> 
 
 
 
@@ -22,6 +22,7 @@
 <br>
 <%= button_to "Account Settings", edit_user_path, method: :get %>
 <br>
+<%= button_to "See Journeys you have commented on", commented_journeys_path(@user), method: :get %>
 <br>
 <%= button_to "Log Out", logout_path, method: 'delete' %>
 

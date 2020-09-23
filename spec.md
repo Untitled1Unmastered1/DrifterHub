@@ -24,3 +24,6 @@ Confirm:
 [x] Limited logic in controllers
 [x] Views use helper methods if appropriate
 [x] Views use partials if appropriate
+
+
+commented_journeys index for any user- nested route 

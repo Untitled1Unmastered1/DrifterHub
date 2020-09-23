@@ -4,7 +4,7 @@ class JourneysController < ApplicationController
 
     def index#controller action, get request for all journeys 
         @journeys = Journey.all 
-    end
+    end 
 
     def new#controller action, get request for a new journey form 
         @journey = Journey.new 

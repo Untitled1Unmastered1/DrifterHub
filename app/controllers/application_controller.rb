@@ -28,8 +28,8 @@ class ApplicationController < ActionController::Base
     end
 
     def current_journey#sets current journey 
-        @journey = Journey.find_by_id(params[:id])
-    end
+        @journey = Journey.find_by_id(params[:id]) 
+    end 
 
 end
 

@@ -1,4 +1,5 @@
 class Comment < ApplicationRecord
+    validates :content, presence: true 
     belongs_to :user 
     belongs_to :journey
     scope :most_recent, -> {Comment.order("created_at DESC")}#scope method to order comments, in descending order based 
