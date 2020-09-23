@@ -1,10 +1,10 @@
 class SessionsController < ApplicationController
 
-    def login
+    def login#get request for login form 
     end
 
 
-    def create
+    def create#post request for a new session 
         @user = User.find_by(username: params[:user][:username])
 
         if @user && @user.authenticate(params[:user][:password])
@@ -16,12 +16,12 @@ class SessionsController < ApplicationController
         end
     end
 
-    def destroy 
+    def destroy#destroys current session 
         session.delete :user_id 
         redirect_to root_path 
     end
 
-    def omniauth
+    def omniauth#omniauth for google sign in
         @user = User.find_or_create_by(uid: auth[:uid]) do |u|
             u.username = email_striper(auth[:info][:email])
             u.password = SecureRandom.hex

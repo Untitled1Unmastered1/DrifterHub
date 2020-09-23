@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [:new, :show, :create, :edit, :update, :destroy]
   resources :journeys do 
-    resources :comments, only: [:new, :create, :show, :index]
+    resources :comments, only: [:new, :create, :index]
   end
 
   delete '/logout', to: 'sessions#destroy'

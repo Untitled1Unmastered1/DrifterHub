@@ -33,7 +33,7 @@ class JourneysController < ApplicationController
     end
 
 
-    def update#controller action, patch request to update a journey 
+    def update#controller action, patch request to update a journey
         if @journey.update(journey_params)
             redirect_to journey_path(@journey)
         else 
@@ -51,7 +51,7 @@ class JourneysController < ApplicationController
 
     private
 
-    def journey_params#
+    def journey_params#We want to make sure that when users submit a form we only let the fields we want submit 
         params.require(:journey).permit(:title, :date, :miles, :location, :description)
     end
 

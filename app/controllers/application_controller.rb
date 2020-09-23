@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
 
     
     def current_user #the current_user method when invoked will either return the @current_user instance variable
-        #or will be equal to the second half which finds and reruns the user based on the session id. 
+        #or will be equal to the second half which finds and returns the user based on the session id. 
         @current_user ||= User.find_by_id(session[:user_id])
     end
 
@@ -21,9 +21,10 @@ class ApplicationController < ActionController::Base
         end
     end 
 
-    def email_striper(email)#specifically used for omniauth 
+    def email_striper(email)#specifically used for omniauth, essentially this method is stripping a part of the email
+        #address to format a username 
         username = email.split(/@gmail.com/)
-        username[0]
+        username[0] 
     end
 
     def current_journey#sets current journey 
