@@ -1,0 +1,20 @@
+ <% if current_user.commented_journeys.count == 0 %>
+    <h4> You have not commented on any Journeys! </h4>
+<% else %>
+<h3>Here are all of the Journeys you have commented on, <%= current_user.username %>! </h3>
+<% end %>
+<% @commented_journeys.each do |j| %> 
+<ul> 
+    <h3><%= link_to j.title, journey_path(j) =%></h3>
+</ul>
+<% end %>
+
+<%= button_to "Add a new Journey", new_journey_path, method: :get %> 
+<br>
+<br>
+<%= button_to "See other Users' Journeys", journeys_path, method: :get %>
+<br>
+<br>
+<%= button_to "Account Settings", edit_user_path, method: :get %>
+<br>
+<%= button_to "Log Out", logout_path, method: 'delete' %>

@@ -3,13 +3,13 @@ class UsersController < ApplicationController
     before_action :find_user, only: [:show, :edit, :update, :destroy]
     before_action :validate, only: [:update, :destroy]
 
-    def commented_journeys
-      find_user
-      @commented_journeys = @user.commented_journeys 
-      #find all commented_journeys pertaining to a specific user, then render them through the show page
-      #for a user 
+    # def commented_journeys
+    #   find_user
+    #   @commented_journeys = @user.commented_journeys 
+    #   #find all commented_journeys pertaining to a specific user, then render them through the show page
+    #   #for a user 
 
-    end
+    # end 
 
     
     def new#controller action, get request for a new user form
